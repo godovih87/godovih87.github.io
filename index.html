@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио студента - достижения и компетенции">
+    <title>Портфолио | Студент</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">/godovih</div>
+                <nav>
+                    <a href="#about">О себе</a>
+                    <a href="#competencies">Компетенции</a>
+                    <!-- <a href="#achievements">Достижения</a> -->
+                    <a href="#works">Работы</a>
+                    <a href="#docs">Документы</a>
+                    <a href="#citizen">Я гражданин</a>
+                    <a href="#contacts">Контакты</a>
+                    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Intro Section -->
+    <div class="container">
+        <section class="intro-section">
+            <div class="intro-text">
+                <p style="font-size: 0.95rem; color: #888; margin-bottom: 1rem;">
+                    Министерство образования и молодежной политики Свердловской области
+                </p>
+                <h1 style="margin-bottom: 0.5rem;">
+                    <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Годовых Егор</span>
+                </h1>
+                <p style="font-size: 1.1rem; color: #555; margin-bottom: 1.5rem;">
+                    <strong>Студент ГАПОУ СО «ЕКТС»</strong>
+                </p>
+                <p style="font-size: 0.95rem; color: #666;">
+                    <strong>Специальность:</strong> 09.02.07 «Информационные системы и программирование»<br>
+                    <strong>Группа:</strong> ПР-42 • <strong>Курс:</strong> 4-й
+                </p>
+                <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #888; line-height: 1.8;">
+                    Портфолио демонстрирует результаты моего обучения в колледже, 
+                    включая реализованные проекты, полученные компетенции, достижения 
+                    в учебной и внеучебной деятельности, а также официальные подтверждающие документы.
+                </p>
+            </div>
+            <div class="intro-image">
+                <!-- Ссылка на фото профиля (вставьте свой путь) -->
+                <img src="photo.png" alt="Фото профиля" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+            </div>
+        </section>
+    </div>
+
+    <main class="container">
+        <!-- About Section -->
+        <section class="section" id="about">
+            <h2 class="section-title">О себе</h2>
+            <ul class="about-list">
+                <li>
+                    <strong>Образование</strong>
+                    <span>ГАПОУ СО «ЕКТС» • Специальность 09.02.07 «Информационные системы и программирование»</span>
+                </li>
+                <li>
+                    <strong>Основные знания и умения</strong>
+                    <span>Разработка веб и мобильных приложений, работа с базами данных, системное администрирование, применение современных технологий и методов программирования</span>
+                </li>
+                <li>
+                    <strong>Личностные качества</strong>
+                    <span>Ответственность, внимательность к деталям, способность быстро обучаться новым технологиям, командная работа, творческое мышление</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Competencies Section -->
+        <section id="competencies" class="section competencies" id="competencies">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-title">Компетенции</span>
+                    <br>
+                    <h2 class="section-title">Профессиональные <span class="text-gradient">стандарты</span></h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="competencies-tabs">
+                    <button class="tab-btn active" data-tab="ok">Общие компетенции</button>
+                    <button class="tab-btn" data-tab="pk">Профессиональные компетенции</button>
+                    <button class="tab-btn" data-tab="dpk">Дополнительные компетенции</button>
+                </div>
+                <div class="tab-content active" id="tab-ok">
+                    <div class="competencies-grid">
+                        <div class="competency-card"><span>ОК 01</span><p>Выбирать способы решения задач профессиональной деятельности</p></div>
+                        <div class="competency-card"><span>ОК 02</span><p>Использовать современные средства поиска и интерпретации информации</p></div>
+                        <div class="competency-card"><span>ОК 03</span><p>Планировать и реализовывать собственное профессиональное развитие</p></div>
+                        <div class="competency-card"><span>ОК 04</span><p>Эффективно работать в коллективе и команде</p></div>
+                        <div class="competency-card"><span>ОК 05</span><p>Осуществлять устную и письменную коммуникацию</p></div>
+                        <div class="competency-card"><span>ОК 06</span><p>Проявлять гражданско-патриотическую позицию</p></div>
+                        <div class="competency-card"><span>ОК 07</span><p>Содействовать сохранению окружающей среды</p></div>
+                        <div class="competency-card"><span>ОК 08</span><p>Использовать средства физической культуры</p></div>
+                        <div class="competency-card"><span>ОК 09</span><p>Пользоваться профессиональной документацией</p></div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-pk">
+                <div class="competencies-group">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <h4>Разработка программных модулей</h4>
+                            <div class="competency-card">
+                                <span>ПК 1.1-1.6</span>
+                                <p>Формирование алгоритмов, разработка, отладка, тестирование, рефакторинг, мобильные платформы</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Интеграция и тестирование</h4>
+                            <div class="competency-card">
+                                <span>ПК 2.1-2.5</span>
+                                <p>Разработка требований, интеграция, отладка, тестовые наборы, инспектирование кода</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Сопровождение и защита</h4>
+                            <div class="competency-card">
+                                <span>ПК 4.1-4.4</span>
+                                <p>Инсталляция, настройка, модификация, защита ПО</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Базы данных</h4>
+                            <div class="competency-card">
+                                <span>ПК 11.1-11.6</span>
+                                <p>Проектирование, разработка, администрирование, защита БД</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="tab-content" id="tab-dpk">
+                    <div class="competencies-grid">
+                        <div class="competency-card"><span>ДПК 2.1</span><p>Системный анализ, UML, MVC, фреймворки, шаблоны проектирования</p></div>
+                        <div class="competency-card"><span>ДПК 2.2</span><p>Работа с системами контроля версий (Git)</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <!-- <section class="section" id="achievements">
+            <h2 class="section-title">Достижения</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-image"> -->
+                        <!-- Ссылка на фото диплома или грамоты -->
+                        <!-- <img src="" alt="Фото диплома" style="width: 100%; height: 100%; object-fit: cover; border-radius: 9px;">
+                    </div>
+
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-image"> -->
+                        <!-- Ссылка на фото сертификата -->
+                        <!-- <img src="" alt="Фото сертификата" style="width: 100%; height: 100%; object-fit: cover; border-radius: 9px;">
+                    </div>
+
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-image"> -->
+                        <!-- Ссылка на фото благодарности -->
+                        <!-- <img src="" alt="Фото благодарности" style="width: 100%; height: 100%; object-fit: cover; border-radius: 9px;">
+                    </div>
+
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Works Section -->
+<section class="section" id="works">
+    <div class="section-header">
+        <h2 class="section-title">Работы и проекты</h2>
+        <div class="section-divider"></div>
+    </div>
+    <div class="projects-grid">
+        
+        <div class="project-card">
+            <div class="project-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="project-content">
+                <span class="project-tag">C# • ASP.NET • HTML/CSS • Entity Framework • SLQ Server</span>
+                <h3>Система регистрации пропусков</h3>
+                <p>Веб-приложение для автоматизации пропускного режима на территории предприятия.</p>
+                <div class="project-buttons">
+                    <button class="project-btn" onclick="openProjectModal('electronics')">
+                        <span>Подробнее</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon">
+                <i class="fas fa-microphone-alt"></i>
+            </div>
+            <div class="project-content">
+                <span class="project-tag">Python</span>
+                <h3>Голосовой ассистент</h3>
+                <p>Голосовой ассистент с распознаванием и синтезом речи. Команды: подбрасывание монетки, поиск в Google, смена языка интерфейса (RU/EN).</p>
+                <div class="project-buttons">
+                    <button class="project-btn" onclick="openProjectModal('assistant')">
+                        <span>Подробнее</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="project-content">
+                <span class="project-tag">C# • WPF • Entity Framework • SLQ Server</span>
+                <h3>Pavilion planner</h3>
+                <p>Декстопное приложение для удобства и автоматизации планирования павильонов.</p>
+                <div class="project-buttons">
+                    <button class="project-btn" onclick="openProjectModal('analysis')">
+                        <span>Подробнее</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+                <!-- Docs Section with Photo Gallery -->
+<section id="docs" class="section docs">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Мои достижения</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="docs-gallery">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Фотографии будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </div>
+</section>
+
+                <!-- Сitizen Section -->
+    <section class="section" id="citizen">
+    <h2 class="section-title">Я гражданин</h2>
+    
+    <div class="docs-slider-container">
+        <button class="slider-btn prev-btn" id="prevBtn">❮</button>
+        
+        <div class="docs-slider" id="docsSlider">
+            <div class="slider-item">
+                <img src="i_grazhd.png" alt="Диплом">
+            </div>
+            <div class="slider-item">
+                <img src="i_grazhd2.png" alt="Сертификат">
+            </div>
+            <div class="slider-item">
+                <img src="expo.jpg" alt="Грамота">
+            </div>
+            <!-- <div class="slider-item">
+                <img src="" alt="Благодарность">
+            </div>
+            <div class="slider-item">
+                <img src="" alt="Диплом 2">
+            </div>
+            <div class="slider-item">
+                <img src="" alt="Сертификат 2">
+            </div> -->
+        </div>
+        
+        <button class="slider-btn next-btn" id="nextBtn">❯</button>
+    </div>
+    
+    <div class="slider-dots" id="sliderDots"></div>
+</section>
+
+        <!-- Contacts Section -->
+        <section class="section" id="contacts">
+            <h2 class="section-title">Контактная информация</h2>
+            <div class="contacts-wrapper">
+                <div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <a href="mailto:egorgodovihggplay@mail.ru">egorgodovihggplay@mail.ru</a>
+                        </div>
+                    </div>
+                    <div class="contact-card" style="margin-top: 1.5rem;">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Телефон</h4>
+                            <a href="tel:+79000494663">+7 (900) 049-46-63</a>
+                        </div>
+                    </div>
+                    <div class="contact-card" style="margin-top: 1.5rem;">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Адрес</h4>
+                            <p>Екатеринбург, Россия</p>
+                        </div>
+                    </div>
+                    <div class="contact-card" style="margin-top: 1.5rem;">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/godovih87" target="_blank">github.com/godovih87</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>© 2026 Годовых Егор</strong></p>
+        <p>Все права защищены</p>
+        <div class="social-links">
+            <a href="https://t.me/godovih" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://github.com/godovih87" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
