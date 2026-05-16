@@ -1,44 +1,71 @@
-// Theme toggle
+// ============ ТЕМА (САМОЕ ВАЖНОЕ В НАЧАЛЕ) ============
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    
+    // Меняем иконку
+    const themeBtn = document.querySelector('.theme-btn');
+    if (themeBtn) {
+        themeBtn.textContent = isDark ? '☀️' : '🌙';
+    }
 }
 
-// Load saved theme
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-}
+// Загружаем сохраненную тему при загрузке страницы
+(function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        const themeBtn = document.querySelector('.theme-btn');
+        if (themeBtn) themeBtn.textContent = '☀️';
+    } else {
+        const themeBtn = document.querySelector('.theme-btn');
+        if (themeBtn) themeBtn.textContent = '🌙';
+    }
+})();
 
-// Active nav link
+// ============ АКТИВНАЯ ССЫЛКА ПРИ СКРОЛЛЕ ============
 window.addEventListener('scroll', () => {
     let current = '';
-    document.querySelectorAll('section').forEach(section => {
+    const sections = document.querySelectorAll('section');
+    const scrollPosition = window.scrollY + 150;
+    
+    sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 200) {
+        const sectionHeight = section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             current = section.getAttribute('id');
         }
     });
-
-    document.querySelectorAll('nav a').forEach(link => {
+    
+    const navLinks = document.querySelectorAll('nav a, .desktop-nav a');
+    navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        const href = link.getAttribute('href');
+        if (href === `#${current}`) {
             link.classList.add('active');
         }
     });
 });
 
-// Smooth scroll
+// ============ ПЛАВНЫЙ СКРОЛЛ ============
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
         if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
+            // Закрываем мобильное меню если открыто
+            const mobileNav = document.querySelector('.desktop-nav');
+            if (mobileNav) mobileNav.classList.remove('show');
         }
     });
 });
 
-// Competencies tabs
+// ============ КОМПЕТЕНЦИИ (ТАБЫ) ============
 const tabBtns = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
@@ -50,11 +77,12 @@ tabBtns.forEach(btn => {
         btn.classList.add('active');
         
         tabContents.forEach(content => content.classList.remove('active'));
-        document.getElementById(`tab-${tabId}`).classList.add('active');
+        const activeTab = document.getElementById(`tab-${tabId}`);
+        if (activeTab) activeTab.classList.add('active');
     });
 });
 
-// ============ SLIDER FUNCTIONALITY - 1 IMAGE AT A TIME ============
+// ============ СЛАЙДЕР (1 ИЗОБРАЖЕНИЕ ЗА РАЗ) ============
 const slider = document.getElementById('docsSlider');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -99,7 +127,6 @@ function goToSlide(index) {
     updateSlider();
 }
 
-// Create dots
 function createDots() {
     if (!dotsContainer) return;
     dotsContainer.innerHTML = '';
@@ -112,7 +139,6 @@ function createDots() {
     }
 }
 
-// Initialize slider
 function initSlider() {
     const items = document.querySelectorAll('.slider-item');
     totalItems = items.length;
@@ -120,7 +146,9 @@ function initSlider() {
     if (totalItems === 0) return;
     
     const firstItem = items[0];
-    itemWidth = firstItem.offsetWidth;
+    if (firstItem) {
+        itemWidth = firstItem.offsetWidth;
+    }
     
     createDots();
     updateButtons();
@@ -169,7 +197,7 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('DOMContentLoaded', initSlider);
 
-// ============ PROJECT MODALS ============
+// ============ ПРОЕКТЫ (МОДАЛЬНЫЕ ОКНА) ============
 function openProjectModal(projectId) {
     const projects = {
         electronics: {
@@ -251,7 +279,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// ============ DOCS GALLERY ============
+// ============ ГАЛЕРЕЯ ДОКУМЕНТОВ ============
 const galleryImages = [
     { src: "sertif.jpg", alt: "Сертификат участника" },
     { src: "sertif2.jpg", alt: "Сертификат участника" },
@@ -272,7 +300,7 @@ function renderGallery() {
         galleryItem.className = 'gallery-item';
         galleryItem.setAttribute('data-index', index);
         galleryItem.innerHTML = `
-            <img src="${image.src}" alt="${image.alt}" loading="lazy">
+            <img src="${image.src}" alt="${image.alt}" loading="lazy" onerror="this.style.display='none'">
             <div class="gallery-overlay">
                 <p>${image.alt}</p>
             </div>
@@ -336,9 +364,13 @@ function updateLightboxImage() {
     const imgElement = lightbox.querySelector('img');
     const counterElement = lightbox.querySelector('.lightbox-counter');
     
-    imgElement.src = image.src;
-    imgElement.alt = image.alt;
-    counterElement.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+    if (imgElement) {
+        imgElement.src = image.src;
+        imgElement.alt = image.alt;
+    }
+    if (counterElement) {
+        counterElement.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+    }
 }
 
 document.addEventListener('keydown', function(e) {
@@ -355,3 +387,23 @@ document.addEventListener('keydown', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', renderGallery);
+
+// ============ МОБИЛЬНОЕ МЕНЮ (ЕСЛИ ИСПОЛЬЗУЕТСЯ) ============
+function toggleMobileMenu() {
+    const nav = document.querySelector('.desktop-nav');
+    if (nav) {
+        nav.classList.toggle('show');
+    }
+}
+
+// Переключатель темы для мобильной кнопки (дубль на всякий случай)
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим все кнопки темы и вешаем обработчик
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    themeBtns.forEach(btn => {
+        // Удаляем старые обработчики, чтобы не было дублей
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', toggleTheme);
+    });
+});
