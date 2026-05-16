@@ -1,29 +1,3 @@
-// ============ ТЕМА (САМОЕ ВАЖНОЕ В НАЧАЛЕ) ============
-function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    
-    // Меняем иконку
-    const themeBtn = document.querySelector('.theme-btn');
-    if (themeBtn) {
-        themeBtn.textContent = isDark ? '☀️' : '🌙';
-    }
-}
-
-// Загружаем сохраненную тему при загрузке страницы
-(function loadTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        const themeBtn = document.querySelector('.theme-btn');
-        if (themeBtn) themeBtn.textContent = '☀️';
-    } else {
-        const themeBtn = document.querySelector('.theme-btn');
-        if (themeBtn) themeBtn.textContent = '🌙';
-    }
-})();
-
 // ============ АКТИВНАЯ ССЫЛКА ПРИ СКРОЛЛЕ ============
 window.addEventListener('scroll', () => {
     let current = '';
@@ -38,7 +12,7 @@ window.addEventListener('scroll', () => {
         }
     });
     
-    const navLinks = document.querySelectorAll('nav a, .desktop-nav a');
+    const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
@@ -58,9 +32,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(targetId);
         if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
-            // Закрываем мобильное меню если открыто
-            const mobileNav = document.querySelector('.desktop-nav');
-            if (mobileNav) mobileNav.classList.remove('show');
         }
     });
 });
@@ -82,7 +53,7 @@ tabBtns.forEach(btn => {
     });
 });
 
-// ============ СЛАЙДЕР (1 ИЗОБРАЖЕНИЕ ЗА РАЗ) ============
+// ============ СЛАЙДЕР ============
 const slider = document.getElementById('docsSlider');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -387,23 +358,3 @@ document.addEventListener('keydown', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', renderGallery);
-
-// ============ МОБИЛЬНОЕ МЕНЮ (ЕСЛИ ИСПОЛЬЗУЕТСЯ) ============
-function toggleMobileMenu() {
-    const nav = document.querySelector('.desktop-nav');
-    if (nav) {
-        nav.classList.toggle('show');
-    }
-}
-
-// Переключатель темы для мобильной кнопки (дубль на всякий случай)
-document.addEventListener('DOMContentLoaded', function() {
-    // Находим все кнопки темы и вешаем обработчик
-    const themeBtns = document.querySelectorAll('.theme-btn');
-    themeBtns.forEach(btn => {
-        // Удаляем старые обработчики, чтобы не было дублей
-        const newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
-        newBtn.addEventListener('click', toggleTheme);
-    });
-});
