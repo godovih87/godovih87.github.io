@@ -1,6 +1,6 @@
 // ============ ТЕМА (САМОЕ ВАЖНОЕ В НАЧАЛЕ) ============
 function toggleTheme() {
-    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     
